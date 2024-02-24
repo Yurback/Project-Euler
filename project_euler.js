@@ -137,18 +137,49 @@ $$(1 + 2 + ... + 10)^2 = 55^2 = 3025.$$
 <p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is $3025 - 385 = 2640$.</p>
 <p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p> */
 
-function findDiff(num) {
-    let sum = (num/2)*(num+1);
-    console.log(sum)
-    let squaresum = sum**2;
-    console.log(squaresum)
-    let sumOfsquare = 0;
-    for (let i = 0; i<=num; i++) {
-        sumOfsquare += i**2;
-    }
-    console.log(sumOfsquare);
-    let result = squaresum-sumOfsquare;
-    console.log(result);
-}
+// function findDiff(num) {
+//     let sum = (num / 2) * (num + 1);
+//     console.log(sum)
+//     let squaresum = sum ** 2;
+//     console.log(squaresum)
+//     let sumOfsquare = 0;
+//     for (let i = 0; i <= num; i++) {
+//         sumOfsquare += i ** 2;
+//     }
+//     console.log(sumOfsquare);
+//     let result = squaresum - sumOfsquare;
+//     console.log(result);
+// }
 
-findDiff(100);
+// findDiff(100);
+
+// 7 +++++++++++++++++++++++++++++++++++++++++++++
+// 10001st Prime
+// By listing the first six prime numbers: 2 3 5 7 11 and 13 we can see that the 6th prime is 13.
+// What is the 10001st prime number?
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     return true;
+// }
+
+// function findPrime(pos) {
+//     const arrPrime = [2];
+//     let num = 3;
+//     while (!arrPrime[pos-1]) {
+//         if (isPrime(num)) {
+//             arrPrime.push(num);
+//             num++;
+//         } else {
+//             num++
+//         }
+//     }
+//     console.log(arrPrime);
+//     console.log(arrPrime[pos-1]);
+
+// }
+
+// findPrime(10001); //104743
