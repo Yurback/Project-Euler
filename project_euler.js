@@ -80,31 +80,50 @@
 /* <p>A palindromic number reads the same both ways. The largest palindrome made from the product of two $2$-digit numbers is $9009 = 91 \times 99$.</p>
 <p>Find the largest palindrome made from the product of two $3$-digit numbers.</p> */
 
-function findPalindrom() {
-    let palindrom = 0 ;  // x0000x
+// function findPalindrom() {
+//     let palindrom = 0 ;  // x0000x
 
-    for (let x = 999; x>0; x--) {
-        for(let y = 999; y>0; y--) {
-            let product = x*y;
-            if (product>100000) {
-                const a = Math.floor(product/100000);
-                const b = Math.floor((product-a*100000)/10000);
-                const c = Math.floor((product - a*100000 - b*10000)/1000);
-                const d = Math.floor((product - a*100000 - b*10000 - c*1000)/100);
-                const e = Math.floor((product - a*100000 - b*10000 - c*1000 - d*100)/10);
-                const f = product - a*100000 - b*10000 - c*1000 - d*100 - e*10;
-                // console.log(product);
-                // console.log(a,b,c,d,e,f);
-                if (a == f && b==e && c==d) {
-                    if (product > palindrom) {
-                        palindrom = product;
-                        console.log(palindrom);
-                    }
-                }
+//     for (let x = 999; x>0; x--) {
+//         for(let y = 999; y>0; y--) {
+//             let product = x*y;
+//             if (product>100000) {
+//                 const a = Math.floor(product/100000);
+//                 const b = Math.floor((product-a*100000)/10000);
+//                 const c = Math.floor((product - a*100000 - b*10000)/1000);
+//                 const d = Math.floor((product - a*100000 - b*10000 - c*1000)/100);
+//                 const e = Math.floor((product - a*100000 - b*10000 - c*1000 - d*100)/10);
+//                 const f = product - a*100000 - b*10000 - c*1000 - d*100 - e*10;
+//                 // console.log(product);
+//                 // console.log(a,b,c,d,e,f);
+//                 if (a == f && b==e && c==d) {
+//                     if (product > palindrom) {
+//                         palindrom = product;
+//                         console.log(palindrom);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     return palindrom;   
+// }
+
+// console.log(findPalindrom());
+
+// 5 +++++++++++++++++++++++++++++++++++++++++++++
+// Smallest Multiple
+// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 ?
+
+function smallMulti(num) {
+    let search = 1;
+
+        for(let i = 1; i<=num; i++) {
+            if(search%i !== 0) {
+                search++;
+                i=1; 
             }
         }
-    }
-    return palindrom;   
+    return search;
 }
 
-console.log(findPalindrom());
+console.log(smallMulti(20));
