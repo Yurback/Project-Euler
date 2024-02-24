@@ -114,16 +114,41 @@
 // 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 ?
 
-function smallMulti(num) {
-    let search = 1;
+// function smallMulti(num) {
+//     let search = 1;
 
-        for(let i = 1; i<=num; i++) {
-            if(search%i !== 0) {
-                search++;
-                i=1; 
-            }
-        }
-    return search;
+//         for(let i = 1; i<=num; i++) {
+//             if(search%i !== 0) {
+//                 search++;
+//                 i=1; 
+//             }
+//         }
+//     return search;
+// }
+
+// console.log(smallMulti(20));
+
+// 6 +++++++++++++++++++++++++++++++++++++++++++++
+// Sum Square Difference
+/* <p>The sum of the squares of the first ten natural numbers is,</p>
+$$1^2 + 2^2 + ... + 10^2 = 385.$$
+<p>The square of the sum of the first ten natural numbers is,</p>
+$$(1 + 2 + ... + 10)^2 = 55^2 = 3025.$$
+<p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is $3025 - 385 = 2640$.</p>
+<p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p> */
+
+function findDiff(num) {
+    let sum = (num/2)*(num+1);
+    console.log(sum)
+    let squaresum = sum**2;
+    console.log(squaresum)
+    let sumOfsquare = 0;
+    for (let i = 0; i<=num; i++) {
+        sumOfsquare += i**2;
+    }
+    console.log(sumOfsquare);
+    let result = squaresum-sumOfsquare;
+    console.log(result);
 }
 
-console.log(smallMulti(20));
+findDiff(100);
