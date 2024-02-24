@@ -107,4 +107,4 @@ function findPalindrom() {
     return palindrom;   
 }
 
-findPalindrom();
+console.log(findPalindrom());
