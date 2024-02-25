@@ -214,28 +214,56 @@ let str =`73167176531330624919225119674426574742355349194934
 //  Find the thirteen adjacent digits in the 13
 // -digit number that have the greatest product. What is the value of this product?
 
-function findadjecents(QuantatySib) {
-    let maxproduct = 0;
-    let arrnum = []
-    for(let i = 0; i<str.length; i++) {
-        const newstr = str.slice(i,QuantatySib+i);
-        let product = 1;
-        for (let j=0; j<newstr.length; j++) {
-            let n = parseInt(newstr[j]);
-            product = product * n;
-        }
-        if (product > maxproduct) {
-            maxproduct = product;
-            arrnum = [...newstr];
-            console.log(maxproduct);
-        }
-    }
-    return {
-        maxproduct: maxproduct,
-        members: arrnum
-        }
- }
- console.log(findadjecents(13));
+// function findadjecents(QuantatySib) {
+//     let maxproduct = 0;
+//     let arrnum = []
+//     for(let i = 0; i<str.length; i++) {
+//         const newstr = str.slice(i,QuantatySib+i);
+//         let product = 1;
+//         for (let j=0; j<newstr.length; j++) {
+//             let n = parseInt(newstr[j]);
+//             product = product * n;
+//         }
+//         if (product > maxproduct) {
+//             maxproduct = product;
+//             arrnum = [...newstr];
+//             console.log(maxproduct);
+//         }
+//     }
+//     return {
+//         maxproduct: maxproduct,
+//         members: arrnum
+//         }
+//  }
+//  console.log(findadjecents(13));
  
+// 9 +++++++++++++++++++++++++++++++++++++++++++++
+// Special Pythagorean Triplet
+/* <p>A Pythagorean triplet is a set of three natural numbers, $a \lt b \lt c$, for which,
+$$a^2 + b^2 = c^2.$$</p>
+<p>For example, $3^2 + 4^2 = 9 + 16 = 25 = 5^2$.</p>
+<p>There exists exactly one Pythagorean triplet for which $a + b + c = 1000$.<br>Find the product $abc$.</p> */
+ 
+function check(a,b,c) {
+        if ((a**2 + b**2)==c**2 && (a+b+c)==1000) return true;
+        return false;
+}
 
- 
+function PythTriplet() {
+        for(let a=0; a<1000; a++) {
+                for (let b=a+1; b<1000; b++) {
+                        for(let c=b+1; c<1000; c++) {
+                                // console.log([a,b,c]);
+                                if(check(a,b,c)) {
+                                        return {
+                                        a: a,
+                                        b: b,
+                                        c: c
+                                        }
+                                }
+                        }
+                }
+        }
+}
+
+console.log(PythTriplet());
