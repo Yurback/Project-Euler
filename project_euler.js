@@ -244,26 +244,62 @@ $$a^2 + b^2 = c^2.$$</p>
 <p>For example, $3^2 + 4^2 = 9 + 16 = 25 = 5^2$.</p>
 <p>There exists exactly one Pythagorean triplet for which $a + b + c = 1000$.<br>Find the product $abc$.</p> */
  
-function check(a,b,c) {
-        if ((a**2 + b**2)==c**2 && (a+b+c)==1000) return true;
-        return false;
+// function check(a,b,c) {
+//         if ((a**2 + b**2)==c**2 && (a+b+c)==1000) return true;
+//         return false;
+// }
+
+// function PythTriplet() {
+//         for(let a=0; a<1000; a++) {
+//                 for (let b=a+1; b<1000; b++) {
+//                         for(let c=b+1; c<1000; c++) {
+//                                 // console.log([a,b,c]);
+//                                 if(check(a,b,c)) {
+//                                         return {
+//                                         a: a,
+//                                         b: b,
+//                                         c: c
+//                                         }
+//                                 }
+//                         }
+//                 }
+//         }
+// }
+
+// console.log(PythTriplet());
+
+// 10 +++++++++++++++++++++++++++++++++++++++++++++
+// Summation of Primes
+// The sum of the primes below 10
+//  is 2+3+5+7=17
+// Find the sum of all the primes below two million.
+
+function isPrime(num) {
+    const pivot = Math.sqrt(num);
+    for (let i = 2; i <= pivot; i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
 }
 
-function PythTriplet() {
-        for(let a=0; a<1000; a++) {
-                for (let b=a+1; b<1000; b++) {
-                        for(let c=b+1; c<1000; c++) {
-                                // console.log([a,b,c]);
-                                if(check(a,b,c)) {
-                                        return {
-                                        a: a,
-                                        b: b,
-                                        c: c
-                                        }
-                                }
-                        }
-                }
+function findPrime(total) {
+    const arrPrime = [2];
+    let num = 3;
+    let pos = 0;
+    while (arrPrime[pos]<2000000) {
+        if (isPrime(num)) {
+            arrPrime.push(num);
+            num++;
+            pos++;
+        } else {
+            num++
         }
+    }
+    console.log(arrPrime);
+    console.log(arrPrime[pos]);
+    arrPrime.pop();
+    console.log(arrPrime.reduce((sum,element)=>sum+element));
+
 }
 
-console.log(PythTriplet());
+findPrime();
