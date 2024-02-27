@@ -603,3 +603,41 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 // }
 
 // getnumber(1000000); // V
+
+// 15 +++++++++++++++++++++++++++++++++++++++++++++
+// Lattice Paths 
+// For description take a look to OneNote Problem 15
+
+// function countWays(r, c, num, memo) {
+//   const keymemo = memo[r.toString() +"_"+ c.toString()];
+//   if (keymemo) return keymemo;
+//   if (r == num && c == num) {
+//     memo[num.toString() +"_"+ num.toString()] = 1;
+//     return 1;
+//   }
+//   if (r < num && c == num) {
+//     const rightstop = countWays(r + 1, c, num, memo);
+//     memo[r.toString() +"_"+ c.toString()] = rightstop;
+//     return rightstop;
+//   }
+//   if (r == num && c < num) {
+//     const downstop = countWays(r, c + 1, num, memo);
+//     memo[r.toString() +"_"+ c.toString()] = downstop;
+//     return downstop;
+//   } 
+//   const toWaycount = countWays(r + 1, c, num, memo) + countWays(r, c + 1, num, memo);
+//   memo[r.toString() +"_"+ c.toString()] = toWaycount;
+//   return toWaycount;
+// }
+
+// function countWays_with_memo(r, c, num) {
+//   const memo = {};
+//   let count = countWays(r, c, num, memo);
+//   console.log(memo);
+//   return count;
+// }
+
+// console.log(countWays_with_memo(0, 0, 20));
+
+// 16 +++++++++++++++++++++++++++++++++++++++++++++
+// Lattice Paths 
