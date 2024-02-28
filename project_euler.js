@@ -735,35 +735,97 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 // 17 +++++++++++++++++++++++++++++++++++++++++++++
 // Number Letter Counts
 
-const hash_table_letter = {
-    1: 'one',
-    2: 'two',
-    3: 'three',
-    4: 'four',
-    5: 'five',
-    6: 'six',
-    7: 'seven',
-    8: 'eight',
-    9: 'nine',
-    10: 'ten',
-    11: 'eleven',
-    12: 'twelve',
-    13: 'thirteen',
-    14: 'fourteen',
-    15: 'fiveteen',
-    16: 'sixteen',
-    17: 'seventeen',
-    18: 'eightteen',
-    19: 'nineteen',
-    20: 'twenty',
-    30: 'thirty',
-    40: 'fourty',
-    50: 'fifty',
-    60: 'sixty',
-    70: 'seventy',
-    80: 'eighty',
-    90: 'ninty',
-    100: 'hundred',
-    1000: 'thousend'
-}
+// function spread(num) {
+//     if (num <= 1000) {
+//         const d = Math.floor(num / 1000);
+//         const c = Math.floor((num - d * 1000) / 100);
+//         const b = Math.floor((num - d * 1000 - c * 100) / 10);
+//         const a = num - d * 1000 - c * 100 - b * 10;
+//         return [d, c, b, a];
+//     }
+// }
 
+// const hash_table_letter = {
+//     1: 'one',
+//     2: 'two',
+//     3: 'three',
+//     4: 'four',
+//     5: 'five',
+//     6: 'six',
+//     7: 'seven',
+//     8: 'eight',
+//     9: 'nine',
+//     10: 'ten',
+//     11: 'eleven',
+//     12: 'twelve',
+//     13: 'thirteen',
+//     14: 'fourteen',
+//     15: 'fifteen',
+//     16: 'sixteen',
+//     17: 'seventeen',
+//     18: 'eighteen',
+//     19: 'nineteen',
+//     20: 'twenty',
+//     30: 'thirty',
+//     40: 'forty',
+//     50: 'fifty',
+//     60: 'sixty',
+//     70: 'seventy',
+//     80: 'eighty',
+//     90: 'ninety',
+//     100: 'hundred',
+//     1000: 'thousand',
+//     and: 'and'
+// }
+// let listofnumbers = [];
+// for (let i = 1; i <= 1000; i++) {
+//     let constructor = '';
+//     let arrNum = spread(i);
+//     if (arrNum) {
+//         if (arrNum[0] == 1) constructor = hash_table_letter[1] + ' ' + hash_table_letter[1000];
+//         else if (arrNum[1] !== 0 && arrNum[2] == 0 && arrNum[3] == 0) constructor = hash_table_letter[arrNum[1]] + ' ' + hash_table_letter[100];
+//         // if (arrNum[1]!==0 && arrNum[2] == 1  && arrNum[3] == 0) constructor = hash_table_letter[arrNum[1]]+ hash_table_letter[100] + hash_table_letter[and] + hash_table_letter[10];
+//         else if (arrNum[1] !== 0 && arrNum[2] == 1) constructor = hash_table_letter[arrNum[1]] + ' ' + hash_table_letter[100] + ' and ' + hash_table_letter[10 + arrNum[3]];
+//         else if (arrNum[1] !== 0 && arrNum[2] == 0 && arrNum[3] != 0) constructor = hash_table_letter[arrNum[1]] + ' ' + hash_table_letter[100] + ' and ' + hash_table_letter[arrNum[3]];
+//         else if (arrNum[1] !== 0 && arrNum[2] > 1 && arrNum[3] == 0) constructor = hash_table_letter[arrNum[1]] + ' ' + hash_table_letter[100] + ' and ' + hash_table_letter[arrNum[2] * 10];
+//         else if (arrNum[1] !== 0 && arrNum[2] > 1 && arrNum[3] != 0) constructor = hash_table_letter[arrNum[1]] + ' ' + hash_table_letter[100] + ' and ' + hash_table_letter[arrNum[2] * 10] + '-' + hash_table_letter[arrNum[3]];
+//         else if (arrNum[1] == 0 && arrNum[2] == 1) constructor = hash_table_letter[10 + arrNum[3]];
+//         else if (arrNum[1] == 0 && arrNum[2] == 0 && arrNum[3] != 0) constructor = hash_table_letter[arrNum[3]];
+//         else if (arrNum[1] == 0 && arrNum[2] > 1 && arrNum[3] == 0) constructor = hash_table_letter[arrNum[2] * 10];
+//         else if (arrNum[1] == 0 && arrNum[2] > 1 && arrNum[3] != 0) constructor = hash_table_letter[arrNum[2] * 10] + ' ' + hash_table_letter[arrNum[3]];
+//     }
+//     listofnumbers.push(constructor);
+// }
+
+// let newlist = listofnumbers.map(el => el.replaceAll(' ', '').replaceAll('-', ''));
+
+// let count = newlist.reduce((res, el) => res + el.length, 0);
+
+
+// console.log(spread(989));
+// console.log(newlist);
+// console.log(count); // 21124 V
+
+// 18 +++++++++++++++++++++++++++++++++++++++++++++
+// Maximum Path Sum I
+
+let pyramid =  [[75],
+                [95,64],
+                [17,47,82],
+                [18,35,87,10],
+                [20,04,82,47,65],
+                [19,01,23,75,03,34],
+                [88,02,77,73,07,63,67],
+                [99,65,04,28,06,16,70,92],
+                [41,41,26,56,83,40,80,70,33],
+                [41,48,72,33,47,32,37,16,94,29],
+                [53,71,44,65,25,43,91,52,97,51,14],
+                [70,11,33,28,77,73,17,78,39,68,17,57],
+                [91,71,52,38,17,14,91,43,58,50,27,29,48],
+                [63,66,04,68,89,53,67,30,73,16,69,87,40,31],
+                [04,62,98,27,23,09,70,98,73,93,38,53,60,04,23]];
+
+function findMaxPath(i,j,arr) {
+    return 
+
+}
