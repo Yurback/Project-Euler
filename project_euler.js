@@ -640,4 +640,130 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 // console.log(countWays_with_memo(0, 0, 20));
 
 // 16 +++++++++++++++++++++++++++++++++++++++++++++
-// Lattice Paths 
+// Power Digit Sum
+// 2^15 = 32768 and the sum of its digits is 
+// 3 + 2 + 7 + 6 +8 = 26
+// What is the sum of the digits of the number 2^1000?
+
+// 2^50 = 1125899906842624
+
+// принимает массив строк из чисел любой размерности
+// function sumBigNum(arr) {
+//     let memory = 0;
+//     let sum = '';
+//     let maxnumdigits = 0;
+//     for (el of arr) {
+//         if (el.length > maxnumdigits) maxnumdigits = el.length;
+//     }
+//     const buildarr = arr.map((el) => {
+//         // console.log(el);
+//         while (el.length != maxnumdigits) { el = '0' + el; }
+//         return el;
+//     });
+//     // console.log(buildarr);
+//     for (let i = maxnumdigits - 1; i >= 0; i--) {
+//         for (let j = 0; j < buildarr.length; j++) {
+//             memory += +buildarr[j][i];
+//             if (j === buildarr.length - 1) {
+//                 let char = memory.toString();
+//                 let suffix = char.slice(-1);
+//                 sum = [suffix, sum].join('');
+//                 prefix = char.slice(0, -1);
+//                 memory = +prefix;
+//             }
+//         }
+//     }
+//     if (memory != 0) sum = memory.toString() + sum;
+//     // console.log(sum);
+//     return sum;
+// }
+
+
+// function multiplyBigNum(n1, n2) {
+//     let arr_product = [];
+//     let memory1 = 0;
+//     let memory2 = '';
+//     for (let i = n2.length - 1; i >= 0; i--) {
+//         for (let j = n1.length - 1; j >= 0; j--) {
+//             let product = +(n2[i]) * (+n1[j]) + memory1;
+//             // console.log(product);
+//             let midresult = product.toString();
+//             if (j === 0) {
+//                 memory2 = [midresult, memory2].join('');
+//             } else {
+//                 memory2 = [midresult.slice(-1), memory2].join('');
+//             }
+//             // console.log(memory2);
+//             memory1 = +midresult.slice(0, -1);
+//             // console.log(memory1);
+//         }
+//         arr_product.push(memory2);
+//         memory1 = 0;
+//         memory2 = '';
+//     }
+//     // console.log(arr_product);
+//     // add to lower digit a zero before addition;
+//     let times = 1;
+//     for (let i = 1; i < arr_product.length; i++) {
+//         let checktimes = times;
+//         while (checktimes > 0) {
+//             arr_product[i] = arr_product[i] + '0';
+//             checktimes--;
+//         }
+//         times++;
+//     }
+//     // console.log(arr_product);
+//     let res = sumBigNum(arr_product);
+//     return res;
+// }
+// // Функция 2^n (n-pow)
+// function powOfTwo(pow, num = 0) {
+//     if (num === pow - 1) return '2';
+//     return multiplyBigNum('2', powOfTwo(pow, num + 1));
+// }
+// // Функция суммирования чисел
+// function sumdigits(num) {
+//     let res = 0;
+//     for (let i = 0; i < num.length; i++) {
+//         res += +num[i];
+//     }
+//     return res;
+// }
+
+// console.log(sumdigits(powOfTwo(1000)));
+
+// 17 +++++++++++++++++++++++++++++++++++++++++++++
+// Number Letter Counts
+
+const hash_table_letter = {
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    10: 'ten',
+    11: 'eleven',
+    12: 'twelve',
+    13: 'thirteen',
+    14: 'fourteen',
+    15: 'fiveteen',
+    16: 'sixteen',
+    17: 'seventeen',
+    18: 'eightteen',
+    19: 'nineteen',
+    20: 'twenty',
+    30: 'thirty',
+    40: 'fourty',
+    50: 'fifty',
+    60: 'sixty',
+    70: 'seventy',
+    80: 'eighty',
+    90: 'ninty',
+    100: 'hundred',
+    1000: 'thousend'
+}
+
