@@ -1013,3 +1013,92 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 //   }
 
 //   console.log(solution2());
+
+// 20 Problem+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Factorial Digit Sum
+/* <p>$n!$ means $n \times (n - 1) \times \cdots \times 3 \times 2 \times 1$.</p>
+<p>For example, $10! = 10 \times 9 \times \cdots \times 3 \times 2 \times 1 = 3628800$,<br>and the sum of the digits in the number $10!$ is $3 + 6 + 2 + 8 + 8 + 0 + 0 = 27$.</p>
+<p>Find the sum of the digits in the number $100!$.</p> */
+
+// function sumBigNum(arr) {
+//     let memory = 0;
+//     let sum = '';
+//     let maxnumdigits = 0;
+//     for (el of arr) {
+//         if (el.length > maxnumdigits) maxnumdigits = el.length;
+//     }
+//     const buildarr = arr.map((el) => {
+//         while (el.length != maxnumdigits) { el = '0' + el; }
+//         return el;
+//     });
+//     for (let i = maxnumdigits - 1; i >= 0; i--) {
+//         for (let j = 0; j < buildarr.length; j++) {
+//             memory += +buildarr[j][i];
+//             if (j === buildarr.length - 1) {
+//                 let char = memory.toString();
+//                 let suffix = char.slice(-1);
+//                 sum = [suffix, sum].join('');
+//                 prefix = char.slice(0, -1);
+//                 memory = +prefix;
+//             }
+//         }
+//     }
+//     if (memory != 0) sum = memory.toString() + sum;
+//     return sum;
+// }
+
+
+// function multiplyBigNum(n1, n2) {
+//     let arr_product = [];
+//     let memory1 = 0;
+//     let memory2 = '';
+//     for (let i = n2.length - 1; i >= 0; i--) {
+//         for (let j = n1.length - 1; j >= 0; j--) {
+//             let product = +(n2[i]) * (+n1[j]) + memory1;
+//             let midresult = product.toString();
+//             if (j === 0) {
+//                 memory2 = [midresult, memory2].join('');
+//             } else {
+//                 memory2 = [midresult.slice(-1), memory2].join('');
+//             }
+//             memory1 = +midresult.slice(0, -1);
+//            }
+//         arr_product.push(memory2);
+//         memory1 = 0;
+//         memory2 = '';
+//     }
+//     // add to lower digit a zero before addition;
+//     let times = 1;
+//     for (let i = 1; i < arr_product.length; i++) {
+//         let checktimes = times;
+//         while (checktimes > 0) {
+//             arr_product[i] = arr_product[i] + '0';
+//             checktimes--;
+//         }
+//         times++;
+//     }
+//     let res = sumBigNum(arr_product);
+//     return res;
+// }
+
+// function fact(number) {
+//     let result = 1;
+//     for(let i=2; i<=number; i++) {
+//         result = result * i;
+//     }
+//     return result;
+// }
+
+// function sumFactorialNumber(number) {
+//     let sumnumber = 0;
+//     let result = '1';
+//     for(let i=2; i<=number; i++) {
+//         result = multiplyBigNum(result, i.toString())
+//     }
+//     for(let i = 0; i<result.length; i++) {
+//         sumnumber = sumnumber + parseInt(result[i]);
+//     }
+//     return sumnumber;
+// }
+
+// console.log(sumFactorialNumber(100)); //648 V
