@@ -997,11 +997,11 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 
 //     var n = 0, dow = 2;
 //     var months = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  
+
 //     for (var y = 1901; y <= 2000; y++) {
-  
+
 //       months[1] = 28 + (y % 4 === 0 && y % 100 !== 0 || y % 400 === 0);
-  
+
 //       for (var month of months) {
 //         dow+= month % 7;
 //         if (dow % 7 === 0) {
@@ -1102,3 +1102,61 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 // }
 
 // console.log(sumFactorialNumber(100)); //648 V
+
+// 21 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Amicable Numbers
+/* <p>Let $d(n)$ be defined as the sum of proper divisors of $n$ (numbers less than $n$ which divide evenly into $n$).<br>
+If $d(a) = b$ and $d(b) = a$, where $a \ne b$, then $a$ and $b$ are an amicable pair and each of $a$ and $b$ are called amicable numbers.</p>
+<p>For example, the proper divisors of $220$ are $1, 2, 4, 5, 10, 11, 20, 22, 44, 55$ and $110$; therefore $d(220) = 284$. The proper divisors of $284$ are $1, 2, 4, 71$ and $142$; so $d(284) = 220$.</p>
+<p>Evaluate the sum of all the amicable numbers under $10000$.</p> */
+
+// function factortoArray(n) {
+//     let arr = [1];
+//     for (let i = 2; i < Math.sqrt(n); i++) {
+//         if (n % i === 0) {
+//             arr.push(i);
+//             arr.push(n / i);
+//         }
+//     }
+//     arr.push(n);
+//     return arr;
+// }
+
+// function properDevisorstoArray(n) {
+//     let arr = [1];
+//     for (let i = 2; i < Math.sqrt(n); i++) {
+//         if (n % i === 0) {
+//             arr.push(i);
+//             arr.push(n / i);
+//         }
+//     }
+//     return arr;
+// }
+
+
+// function findSumOfAmicable() {
+
+//     let set = new Set();
+//     let sum = 0;
+
+//     for (let i = 2;i<=10000; i++) {
+//         if(set.has(i)) continue;
+//         let arr = properDevisorstoArray(i);
+//         let conj = arr.reduce((acc,elem)=>acc+elem);
+
+//         if(conj>10000) continue;
+//         let conjfactors = properDevisorstoArray(conj);
+//         let countconjfact = conjfactors.reduce((acc,elem)=>acc+elem);
+//         if(countconjfact==i && conj != i) {set.add(i); set.add(conj); console.log(i,conj);};
+//     }
+//     console.log(set);
+//     let iter = set.keys();
+//     let elem = iter.next().value;
+//     while(elem) {
+//         sum += elem;
+//         elem=iter.next().value;
+//     }
+//     return sum;
+// }
+
+// console.log(findSumOfAmicable()); // 31626 V
