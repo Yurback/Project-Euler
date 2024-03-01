@@ -1628,7 +1628,7 @@ function subtractBibNum(num1, num2, sign = '') {
     return subtract;
 }
 
-console.log(subtractBibNum('12','5'));
+console.log(subtractBibNum('120076','5234234'));
 
 function sumBigNum(arr) {
     let memory = 0;
@@ -1664,12 +1664,13 @@ function sumBigNum(arr) {
 let memo = [];
 
 function fibonacci(n) {
-    const fibNumbers = [1, 1];
-    for (let i = 2; i < n; i++) {
-        const num = fibNumbers[i - 2] + fibNumbers[i - 1];
+    const fibNumbers = [1n, 1n];
+    for (let i = 2n; i < n; i=i+1n) {
+        const num = fibNumbers[i - 2n] + fibNumbers[i - 1n];
         fibNumbers.push(num);
     }
-    console.log(fibNumbers);
+    return fibNumbers;
 }
-
-fibonacci(12);
+// Решение за счет больших чисел 5252345234n последний символ n
+// Сначала решил при помощи своей функции SubtrackBigNum
+console.log(fibonacci(4782n)[4781].toString().length); //4782 V
