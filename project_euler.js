@@ -1584,3 +1584,92 @@ If $d(a) = b$ and $d(b) = a$, where $a \ne b$, then $a$ and $b$ are an amicable 
 // }
 // console.log(newArr); // (10) [2, 7, 8, 3, 9, 1, 5, 4, 6, 0] 1000000
 // console.log(count);
+
+// 25 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 1000-digit Fibonacci Number
+
+
+let a = '234502';
+let b = '050505';
+
+function subtractBibNum(num1, num2, sign = '') {
+    let maxnumdigits = 0;
+    if (num1.length >= num2.length) {
+        maxnumdigits = num1.length;
+        while (num2.length != maxnumdigits) { num2 = '0' + num2; }
+    } else { maxnumdigits = num2.length };
+    
+    if (num1 < num2) return subtractBibNum(num2, num1, '-');
+    
+    let subtract = '';
+  
+    let indexCredit = new Array(num1.length).fill(0); //[0,0,0,0,0,0]      [0,0,0,1,0,0]
+    let indexDebit = new Array(num1.length).fill(0);  //[0,0,0,0,0,0]      [0,0,0,0,9,10]
+
+
+    for (let i = num1.length - 1; i >= 0; i--) {
+        if (num1[i] - indexCredit[i] + indexDebit[i] >= num2[i]) subtract = ((num1[i]- indexCredit[i] + indexDebit[i])  - num2[i]).toString() + subtract;
+        if (num1[i] - indexCredit[i] + indexDebit[i] < num2[i]) {
+            for (let j = i - 1; j >= 0; j--) {
+                if (num1[j] > 0) {
+                    indexCredit[j] = 1;
+                    for (let n = j + 1; n <= i; n++) {
+                        if (n != i) { indexDebit[n] = 9 }
+                        else indexDebit[n] = 10;
+                    }
+                    break;
+                }
+            }
+            console.log(indexCredit,indexDebit)
+            subtract = ((num1[i]- indexCredit[i] + indexDebit[i]) - num2[i]).toString() + subtract;
+        }
+    }
+    if(sign=='-') return subtract='-'+subtract;
+    return subtract;
+}
+
+console.log(subtractBibNum('12','5'));
+
+function sumBigNum(arr) {
+    let memory = 0;
+    let sum = '';
+    let maxnumdigits = 0;
+    for (el of arr) {
+        if (el.length > maxnumdigits) maxnumdigits = el.length;
+    }
+    const buildarr = arr.map((el) => {
+        // console.log(el);
+        while (el.length != maxnumdigits) { el = '0' + el; }
+        return el;
+    });
+    // console.log(buildarr);
+    for (let i = maxnumdigits - 1; i >= 0; i--) {
+        for (let j = 0; j < buildarr.length; j++) {
+            memory += +buildarr[j][i];
+            if (j === buildarr.length - 1) {
+                let char = memory.toString();
+                let suffix = char.slice(-1);
+                sum = [suffix, sum].join('');
+                prefix = char.slice(0, -1);
+                memory = +prefix;
+            }
+        }
+    }
+    if (memory != 0) sum = memory.toString() + sum;
+    // console.log(sum);
+    return sum;
+}
+
+
+let memo = [];
+
+function fibonacci(n) {
+    const fibNumbers = [1, 1];
+    for (let i = 2; i < n; i++) {
+        const num = fibNumbers[i - 2] + fibNumbers[i - 1];
+        fibNumbers.push(num);
+    }
+    console.log(fibNumbers);
+}
+
+fibonacci(12);
