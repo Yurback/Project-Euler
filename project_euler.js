@@ -1695,26 +1695,35 @@ If $d(a) = b$ and $d(b) = a$, where $a \ne b$, then $a$ and $b$ are an amicable 
 // function devideFraction(num1, num2) {
 //     let multiplier = 1;
 //     let result = 0;
-//     let chainNumerators = [];
 //     let numerator = num1;
 //     const denomenator = num2;
+//     let chainNumerators = [];
+//     // let flag = true;
 
 //     while (chainNumerators.indexOf(numerator) == -1) {
+//         // if(flag) {
+//         //     flag = false;
+//         // }
 //         const check = numerator % denomenator;
 //         switch (check) {
 //             case 0:
-//                 result = result + numerator / denomenator * multiplier;
+//                 result = result + numerator / denomenator / multiplier;
 //                 return { result: result, arr: chainNumerators, index: chainNumerators.indexOf(numerator) };
 //             default:
 //                 if (numerator - denomenator < 0) {
-//                     multiplier = multiplier / 10;
+//                 //    if (flag && numerator!=num1) chainNumerators.push(numerator);
+//                     multiplier = multiplier * 10;
 //                     numerator = numerator * 10;
+//                     // flag = true;
 //                     // console.log(numerator);
 //                     continue;
 //                 }
 //                 if (numerator - denomenator > 0) {
+//                     // if (flag) {
+//                     //     flag = false;
+//                     // }
 //                     chainNumerators.push(numerator);
-//                     result = result + Math.floor(numerator / denomenator) * multiplier;
+//                     result = result + Math.floor(numerator / denomenator) / multiplier;
 //                     numerator = check;
 //                     // console.log(result);
 //                 }
@@ -1724,8 +1733,8 @@ If $d(a) = b$ and $d(b) = a$, where $a \ne b$, then $a$ and $b$ are an amicable 
 //     return { result: result, arr: chainNumerators, index: chainNumerators.indexOf(numerator) };
 // }
 
-// // let answer = devideFraction(1, 6);
-// // console.log(answer.result, answer.arr, answer.index);
+// let answer = devideFraction(1,99);
+// console.log(answer.result, answer.arr, answer.index);
 
 // function findmax() {
 //     let maxcycle = 0;
@@ -1744,6 +1753,53 @@ If $d(a) = b$ and $d(b) = a$, where $a \ne b$, then $a$ and $b$ are an amicable 
 //     console.log(maxvalue);
 // }
 
-// findmax(); 893 V
+// findmax(); //893 V
 
 // 27 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Quadratic Primes
+/* <p>Euler discovered the remarkable quadratic formula:</p>
+<p class="center">$n^2 + n + 41$</p>
+<p>It turns out that the formula will produce $40$ primes for the consecutive integer values $0 \le n \le 39$. However, when $n = 40, 40^2 + 40 + 41 = 40(40 + 1) + 41$ is divisible by $41$, and certainly when $n = 41, 41^2 + 41 + 41$ is clearly divisible by $41$.</p>
+<p>The incredible formula $n^2 - 79n + 1601$ was discovered, which produces $80$ primes for the consecutive values $0 \le n \le 79$. The product of the coefficients, $-79$ and $1601$, is $-126479$.</p>
+<p>Considering quadratics of the form:</p>
+<blockquote>
+$n^2 + an + b$, where $|a| &lt; 1000$ and $|b| \le 1000$<br><br><div>where $|n|$ is the modulus/absolute value of $n$<br>e.g. $|11| = 11$ and $|-4| = 4$</div>
+</blockquote>
+<p>Find the product of the coefficients, $a$ and $b$, for the quadratic expression that produces the maximum number of primes for consecutive values of $n$, starting with $n = 0$.</p>
+</div><br></br> */
+
+// function isPrime(num) {
+//     if (num<0) return false;
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     return true;
+// }
+
+// function producer() {
+
+//     let maxlength = 0;
+//     const k = [0, 0];
+//     const primesnumber = [];
+
+//     for (let i = 999; i > -999; i--) {
+//         for (let j = 1000; j >= -1000; j--) {
+//             let n = 0;
+           
+//             while (isPrime(n**2 + i * n + j)) {
+//                 n++;
+//                 if (n > maxlength)  {
+//                     maxlength = n;
+//                     k[0] = i; k[1] = j;
+//                 }
+                
+//             }
+//         }
+//     }
+//     return { maxlength: maxlength, coef: k }
+// }
+
+// console.log(producer()); // 59231
+
+// 28
