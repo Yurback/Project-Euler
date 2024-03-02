@@ -1786,14 +1786,14 @@ $n^2 + an + b$, where $|a| &lt; 1000$ and $|b| \le 1000$<br><br><div>where $|n|$
 //     for (let i = 999; i > -999; i--) {
 //         for (let j = 1000; j >= -1000; j--) {
 //             let n = 0;
-           
+
 //             while (isPrime(n**2 + i * n + j)) {
 //                 n++;
 //                 if (n > maxlength)  {
 //                     maxlength = n;
 //                     k[0] = i; k[1] = j;
 //                 }
-                
+
 //             }
 //         }
 //     }
@@ -1802,4 +1802,79 @@ $n^2 + an + b$, where $|a| &lt; 1000$ and $|b| \le 1000$<br><br><div>where $|n|$
 
 // console.log(producer()); // 59231
 
-// 28
+// 28 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Number Spiral Diagonals
+// 
+
+// let base = [
+//     [0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0]
+
+// ];
+
+    let base = Array.from(Array(1001), ()=>Array(1001).fill(0));
+
+function fillarray(base) {
+
+    base[500][500] = 1;
+    base[50][501] = 2;
+ 
+    let n = 3;
+    let i = 501;
+    let j = 501;
+    let count = 1
+    let prevcount = 2
+    let countwhile=2
+    cycle:
+    while (base[0][1000] == 0) {
+        count = prevcount;
+        while (count != 0) {
+            // console.log(count);
+            base[i][j] = n;
+            if(base[0][1000] !== 0)break cycle;
+            n++; j--;
+            count--;
+        }
+        // console.log(base)
+        count = prevcount;
+ 
+        while (count != 0) {
+            // console.log(count);
+            base[i][j] = n;
+            if(base[0][1000] !== 0)break cycle;
+            n++; i--;
+            count--;
+            if (count == 0) prevcount++;
+        }
+        // console.log(base)
+        // console.log(count,i,j);
+        count = prevcount;
+        while (count != 0) {
+            base[i][j] = n;
+            if(base[0][1000] !== 0)break cycle;
+            n++; j++;
+            count--;
+        }
+        count = prevcount;
+        while (count != 0) {
+            base[i][j] = n;
+            if(base[0][1000] !== 0)break cycle;
+            n++; i++;
+            count--;
+            if (count == 0) prevcount++;
+
+        }
+        // countwhile--;
+    }
+    console.log(base);
+    let sum = 0
+    for(let i = 0; i<base.length;i++) {
+        sum+=base[i][i];
+        sum+=base[base.length-1-i][i];
+    }
+    console.log(sum);
+}
+fillarray(base); // 669171002 -1 V
