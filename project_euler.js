@@ -1589,88 +1589,161 @@ If $d(a) = b$ and $d(b) = a$, where $a \ne b$, then $a$ and $b$ are an amicable 
 // 1000-digit Fibonacci Number
 
 
-let a = '234502';
-let b = '050505';
+// let a = '234502';
+// let b = '050505';
 
-function subtractBibNum(num1, num2, sign = '') {
-    let maxnumdigits = 0;
-    if (num1.length >= num2.length) {
-        maxnumdigits = num1.length;
-        while (num2.length != maxnumdigits) { num2 = '0' + num2; }
-    } else { maxnumdigits = num2.length };
-    
-    if (num1 < num2) return subtractBibNum(num2, num1, '-');
-    
-    let subtract = '';
-  
-    let indexCredit = new Array(num1.length).fill(0); //[0,0,0,0,0,0]      [0,0,0,1,0,0]
-    let indexDebit = new Array(num1.length).fill(0);  //[0,0,0,0,0,0]      [0,0,0,0,9,10]
+// function subtractBibNum(num1, num2, sign = '') {
+//     let maxnumdigits = 0;
+//     if (num1.length >= num2.length) {
+//         maxnumdigits = num1.length;
+//         while (num2.length != maxnumdigits) { num2 = '0' + num2; }
+//     } else { maxnumdigits = num2.length };
 
+//     if (num1 < num2) return subtractBibNum(num2, num1, '-');
 
-    for (let i = num1.length - 1; i >= 0; i--) {
-        if (num1[i] - indexCredit[i] + indexDebit[i] >= num2[i]) subtract = ((num1[i]- indexCredit[i] + indexDebit[i])  - num2[i]).toString() + subtract;
-        if (num1[i] - indexCredit[i] + indexDebit[i] < num2[i]) {
-            for (let j = i - 1; j >= 0; j--) {
-                if (num1[j] > 0) {
-                    indexCredit[j] = 1;
-                    for (let n = j + 1; n <= i; n++) {
-                        if (n != i) { indexDebit[n] = 9 }
-                        else indexDebit[n] = 10;
-                    }
-                    break;
-                }
-            }
-            console.log(indexCredit,indexDebit)
-            subtract = ((num1[i]- indexCredit[i] + indexDebit[i]) - num2[i]).toString() + subtract;
-        }
-    }
-    if(sign=='-') return subtract='-'+subtract;
-    return subtract;
-}
+//     let subtract = '';
 
-console.log(subtractBibNum('120076','5234234'));
-
-function sumBigNum(arr) {
-    let memory = 0;
-    let sum = '';
-    let maxnumdigits = 0;
-    for (el of arr) {
-        if (el.length > maxnumdigits) maxnumdigits = el.length;
-    }
-    const buildarr = arr.map((el) => {
-        // console.log(el);
-        while (el.length != maxnumdigits) { el = '0' + el; }
-        return el;
-    });
-    // console.log(buildarr);
-    for (let i = maxnumdigits - 1; i >= 0; i--) {
-        for (let j = 0; j < buildarr.length; j++) {
-            memory += +buildarr[j][i];
-            if (j === buildarr.length - 1) {
-                let char = memory.toString();
-                let suffix = char.slice(-1);
-                sum = [suffix, sum].join('');
-                prefix = char.slice(0, -1);
-                memory = +prefix;
-            }
-        }
-    }
-    if (memory != 0) sum = memory.toString() + sum;
-    // console.log(sum);
-    return sum;
-}
+//     let indexCredit = new Array(num1.length).fill(0); //[0,0,0,0,0,0]      [0,0,0,1,0,0]
+//     let indexDebit = new Array(num1.length).fill(0);  //[0,0,0,0,0,0]      [0,0,0,0,9,10]
 
 
-let memo = [];
+//     for (let i = num1.length - 1; i >= 0; i--) {
+//         if (num1[i] - indexCredit[i] + indexDebit[i] >= num2[i]) subtract = ((num1[i]- indexCredit[i] + indexDebit[i])  - num2[i]).toString() + subtract;
+//         if (num1[i] - indexCredit[i] + indexDebit[i] < num2[i]) {
+//             for (let j = i - 1; j >= 0; j--) {
+//                 if (num1[j] > 0) {
+//                     indexCredit[j] = 1;
+//                     for (let n = j + 1; n <= i; n++) {
+//                         if (n != i) { indexDebit[n] = 9 }
+//                         else indexDebit[n] = 10;
+//                     }
+//                     break;
+//                 }
+//             }
+//             console.log(indexCredit,indexDebit)
+//             subtract = ((num1[i]- indexCredit[i] + indexDebit[i]) - num2[i]).toString() + subtract;
+//         }
+//     }
+//     if(sign=='-') return subtract='-'+subtract;
+//     return subtract;
+// }
 
-function fibonacci(n) {
-    const fibNumbers = [1n, 1n];
-    for (let i = 2n; i < n; i=i+1n) {
-        const num = fibNumbers[i - 2n] + fibNumbers[i - 1n];
-        fibNumbers.push(num);
-    }
-    return fibNumbers;
-}
-// Решение за счет больших чисел 5252345234n последний символ n
-// Сначала решил при помощи своей функции SubtrackBigNum
-console.log(fibonacci(4782n)[4781].toString().length); //4782 V
+// console.log(subtractBibNum('120076','5234234'));
+
+// function sumBigNum(arr) {
+//     let memory = 0;
+//     let sum = '';
+//     let maxnumdigits = 0;
+//     for (el of arr) {
+//         if (el.length > maxnumdigits) maxnumdigits = el.length;
+//     }
+//     const buildarr = arr.map((el) => {
+//         // console.log(el);
+//         while (el.length != maxnumdigits) { el = '0' + el; }
+//         return el;
+//     });
+//     // console.log(buildarr);
+//     for (let i = maxnumdigits - 1; i >= 0; i--) {
+//         for (let j = 0; j < buildarr.length; j++) {
+//             memory += +buildarr[j][i];
+//             if (j === buildarr.length - 1) {
+//                 let char = memory.toString();
+//                 let suffix = char.slice(-1);
+//                 sum = [suffix, sum].join('');
+//                 prefix = char.slice(0, -1);
+//                 memory = +prefix;
+//             }
+//         }
+//     }
+//     if (memory != 0) sum = memory.toString() + sum;
+//     // console.log(sum);
+//     return sum;
+// }
+
+
+// let memo = [];
+
+// function fibonacci(n) {
+//     const fibNumbers = [1n, 1n];
+//     for (let i = 2n; i < n; i=i+1n) {
+//         const num = fibNumbers[i - 2n] + fibNumbers[i - 1n];
+//         fibNumbers.push(num);
+//     }
+//     return fibNumbers;
+// }
+// // Решение за счет больших чисел 5252345234n последний символ n
+// // Сначала решил при помощи своей функции SubtrackBigNum
+// console.log(fibonacci(4782n)[4781].toString().length); //4782 V
+
+// 26 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Reciprocal Cycles
+/* <p>A unit fraction contains $1$ in the numerator. The decimal representation of the unit fractions with denominators $2$ to $10$ are given:</p>
+\begin{align}
+1/2 &amp;= 0.5\\
+1/3 &amp;=0.(3)\\
+1/4 &amp;=0.25\\
+1/5 &amp;= 0.2\\
+1/6 &amp;= 0.1(6)\\
+1/7 &amp;= 0.(142857)\\
+1/8 &amp;= 0.125\\
+1/9 &amp;= 0.(1)\\
+1/10 &amp;= 0.1
+\end{align}
+<p>Where $0.1(6)$ means $0.166666\cdots$, and has a $1$-digit recurring cycle. It can be seen that $1/7$ has a $6$-digit recurring cycle.</p>
+<p>Find the value of $d \lt 1000$ for which $1/d$ contains the longest recurring cycle in its decimal fraction part.</p> */
+
+// function devideFraction(num1, num2) {
+//     let multiplier = 1;
+//     let result = 0;
+//     let chainNumerators = [];
+//     let numerator = num1;
+//     const denomenator = num2;
+
+//     while (chainNumerators.indexOf(numerator) == -1) {
+//         const check = numerator % denomenator;
+//         switch (check) {
+//             case 0:
+//                 result = result + numerator / denomenator * multiplier;
+//                 return { result: result, arr: chainNumerators, index: chainNumerators.indexOf(numerator) };
+//             default:
+//                 if (numerator - denomenator < 0) {
+//                     multiplier = multiplier / 10;
+//                     numerator = numerator * 10;
+//                     // console.log(numerator);
+//                     continue;
+//                 }
+//                 if (numerator - denomenator > 0) {
+//                     chainNumerators.push(numerator);
+//                     result = result + Math.floor(numerator / denomenator) * multiplier;
+//                     numerator = check;
+//                     // console.log(result);
+//                 }
+//         }
+
+//     }
+//     return { result: result, arr: chainNumerators, index: chainNumerators.indexOf(numerator) };
+// }
+
+// // let answer = devideFraction(1, 6);
+// // console.log(answer.result, answer.arr, answer.index);
+
+// function findmax() {
+//     let maxcycle = 0;
+//     let devider = 0;
+//     let maxvalue = {};
+//     for(let i=1; i<1000; i++) {
+//         const value = devideFraction(1,i);
+//         if(value.arr.length-value.index > maxcycle) {
+//             maxcycle = value.arr.length-value.index;
+//             devider = i;
+//             maxvalue = value;
+//         }
+//     }
+//     console.log(maxcycle);
+//     console.log(devider);
+//     console.log(maxvalue);
+// }
+
+// findmax(); 893 V
+
+// 27 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
