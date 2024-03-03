@@ -1821,7 +1821,7 @@ $n^2 + an + b$, where $|a| &lt; 1000$ and $|b| \le 1000$<br><br><div>where $|n|$
 
 //     base[500][500] = 1;
 //     base[50][501] = 2;
- 
+
 //     let n = 3;
 //     let i = 501;
 //     let j = 501;
@@ -1840,7 +1840,7 @@ $n^2 + an + b$, where $|a| &lt; 1000$ and $|b| \le 1000$<br><br><div>where $|n|$
 //         }
 //         // console.log(base)
 //         count = prevcount;
- 
+
 //         while (count != 0) {
 //             // console.log(count);
 //             base[i][j] = n;
@@ -1903,3 +1903,263 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 // }
 
 // findsize(); //9183 V
+
+// // 30 Problem
+// // Digit Fifth Powers
+// /* <p>Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
+// \begin{align}
+// 1634 &amp;= 1^4 + 6^4 + 3^4 + 4^4\\
+// 8208 &amp;= 8^4 + 2^4 + 0^4 + 8^4\\
+// 9474 &amp;= 9^4 + 4^4 + 7^4 + 4^4
+// \end{align}
+// </p><p class="smaller">As $1 = 1^4$ is not a sum it is not included.</p>
+// <p>The sum of these numbers is $1634 + 8208 + 9474 = 19316$.</p>
+// <p>Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.</p> */
+
+// // let max number = 9**5+9**5+9**5+9**5+9**5+9**5+9**5+9**5+9**5
+
+// function finddigit(num){
+//     let strnum = num.toString()
+//     let length = strnum.length;
+//     let arrnum = [];
+//     for(let i=0; i<length; i++){
+//         arrnum.push(parseInt(strnum.slice(i,i+1)));
+//     }
+//     return arrnum;
+// }
+
+// function sumofpower5() {
+//     let arr = [];
+//     for(let i = 1; i<500000; i++) {
+//         let arrnum = finddigit(i);
+//         let res = arrnum.reduce((acc,elem)=>acc+elem**5,0);
+//         if(res == i) arr.push(i);
+//     }
+//     let sum = arr.reduce((acc,elem)=>acc+elem,0);
+//     return sum;
+// }
+
+// // console.log(finddigit(1655535));
+// console.log(sumofpower5()); // 443839 V
+
+//31 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Coin Sums
+// In the United Kingdom the currency is made up of pound (£) and pence (p). There are eight coins in general circulation:
+
+// 1p, 2p, 5p, 10p, 20p, 50p, £1 (100p), and £2 (200p).
+// It is possible to make £2 in the following way:
+
+// 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
+// How many different ways can £2 be made using any number of coins?
+
+// 200 = a + 2b +5c + 10d + 20 e + 50f + 100 g + 200h
+// let cnt = 0;
+
+// for (let a = 0; a<201; a++) {
+//     for (let b = 0; b<101; b++) {
+//         for (let c=0; c<41; c++) {
+//             for (let d=0; d<21; d++) {
+//                 for (let e=0; e<11; e++) {
+//                     for(let f=0; f<5; f++) {
+//                         for(let g=0; g<3; g++) {
+//                             if((a+2*b+5*c+10*d+20*e+50*f+100*g) == 200) cnt++; 
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// console.log(cnt); 73681 + 1 V
+
+// 32 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Pandigital Products
+
+/* <p>We shall say that an $n$-digit number is pandigital if it makes use of all the digits $1$ to $n$ exactly once; for example, the $5$-digit number, $15234$, is $1$ through $5$ pandigital.</p>
+<p>The product $7254$ is unusual, as the identity, $39 \times 186 = 7254$, containing multiplicand, multiplier, and product is $1$ through $9$ pandigital.</p>
+<p>Find the sum of all products whose multiplicand/multiplier/product identity can be written as a $1$ through $9$ pandigital.</p>
+<div class="note">HINT: Some products can be obtained in more than one way so be sure to only include it once in your sum.</div> */
+
+// 1 2 3 4 5 6 7 8 9
+// a b c d e f g h k
+
+// function findpandigital() {
+//     let sets = [];
+//     for (let a=1; a<=9; a++) {
+//         for (let b=1; b<=9; b++) {
+//             if(b==a) continue;
+//             for (let c=1; c<=9; c++) {
+//                 if (c==a || c == b) continue;
+//                 for (let d=1; d<=9; d++){
+//                     if (d==a || d==b || d==c) continue;
+//                     for (let e=1; e<=9; e++) {
+//                         if( e==a || e==b || e==c || e==d) continue;
+//                         for (let f=1; f<=9; f++) {
+//                             if(f==a || f==b || f==c || f==d || f==e) continue;
+//                             for (let g=1; g<=9; g++) {
+//                                 if(g==a || g==b || g==c || g==d || g==e || g==f) continue;
+//                                 for (let h=1; h<=9; h++) {
+//                                     if (h==a || h==b || h==c || h==d || h==e || h==f || h==g) continue;
+//                                     for (let k=1; k<=9; k++) {
+//                                         if (k==a || k==b || k==c || k==d || k==e || k==f || k==g || k==h) continue;
+//                                         // console.log(a*10 + b);
+//                                         // console.log(c*10**2 + d*10 + e);
+//                                         // console.log(f*10**3+ g*10**2 + h*10 + k);
+//                                         // if(((a*10 + b) * (c*10**2 + d*10 + e)) == (f*10**3+ g*10**2 + h*10 + k)) sets.push(f*10**3+ g*10**2 + h*10 + k) // sets.push([a*10 + b,c*10**2 + d*10 + e,f*10**3+ g*10**2 + h*10 + k])
+//                                         if(((a*10**2 + b*10 + c) * (d*10 + e)) == (f*10**3+ g*10**2 + h*10 + k)) sets.push(f*10**3+ g*10**2 + h*10 + k)//sets.push([a*10**2 + b*10 + c,d*10 + e,f*10**3+ g*10**2 + h*10 + k])
+//                                         // if((a * (b*10**3+c*10**2+d*10 + e)) == (f*10**3+ g*10**2 + h*10 + k)) sets.push(f*10**3+ g*10**2 + h*10 + k)
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+
+//                 }
+
+//             }
+
+//         }
+//     }
+//     console.log(sets);
+//     let res = 0
+//     for (let i=2; i<sets.length; i++) {
+//         res += sets[i];
+//     }
+//     return res;
+// }
+
+// //30424
+
+// // 6952,7852
+// console.log(findpandigital()); // 45228 V
+
+// 33 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// DIgit Cancelling Fractions
+
+// The fraction 49/98 is a curious fraction, as an inexperienced mathematician in attempting to simplify it may incorrectly believe that 
+// , which is correct, is obtained by cancelling the 9s.
+
+// We shall consider fractions like, 30/50 =3/5 , to be trivial examples.
+
+// There are exactly four non-trivial examples of this type of fraction, less than one in value, and containing two digits in the numerator and denominator.
+
+// If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
+
+// function findfraction() {
+//     const arr = [];
+
+//     // a b c number
+
+//     for (let a = 1; a <= 9; a++) {
+//         for (let b = 1; b <= 9; b++) {
+//             for (let c = 1; c <= 9; c++) {
+//                 if ((a * 10 + b )/ (b * 10 + c) == a / c && (a * 10 + b )/ (b * 10 + c) < 1) {arr.push([a,b,c])}
+//             }
+//         }
+//     }
+//     console.log(arr);
+// }
+// // 24206
+// findfraction()
+// // 19 13 2 7
+
+// function factortoArray(n) {
+//     let arr = [1];
+//     for (let i = 2; i < Math.sqrt(n); i++) {
+//         if (n % i === 0) {
+//             arr.push(i);
+//             arr.push(n / i);
+//         }
+//     }
+//     arr.push(n);
+//     return arr;
+// }
+
+// console.log(factortoArray(12103));
+
+// 387296 / 38729600  193648/19364800  96824/9682400 48412/4841200   24206/2420600   12103/1210300 = 1/100 V
+
+// 34 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Digit Factorials
+// 145 is a curious number, as 1! + 4! + 5! = 1+ 24+120=145.
+// Find the sum of all numbers which are equal to the sum of the factorial of their digits.
+// Note: As 1!=1 and 2!=2 are not sums they are not included.
+
+function fact(number) {
+    let result = 1;
+    for(let i=2; i<=number; i++) {
+        result = result * i;
+    }
+    if(number == 0)return 0;
+    return result;
+}
+
+function finddigit(num){
+    let strnum = num.toString()
+    let length = strnum.length;
+    let arrnum = [];
+    for(let i=0; i<length; i++){
+        arrnum.push(BigInt(parseInt(strnum.slice(i,i+1))));
+    }
+    return arrnum;
+}
+
+function findsumfactorial() {
+    const arr = [];
+    let memo = {
+        0:0n,
+        1:1n,
+        2:2n,
+        3:6n,
+        4:24n,
+        5:120n,
+        6:720n,
+        7:5040n,
+        8:40320n,
+        9:362880n
+    };
+
+    for(let i= 3n; i<100000000n; i=i+1n ){
+        let checkarr = finddigit(i);
+        let sumfact = 0n;
+        for(let i =0; i<checkarr.length; i++) {
+            sumfact+= memo[checkarr[i]];
+        }
+
+        if(sumfact==i) arr.push(i);
+    }
+
+
+    // // a, b, c, d, e, f, g, h
+    // for(let a=0; a<9; a++) {
+    //     for(let b=0; b<9; b++){
+    //         for(let c=0; c<9; c++){
+    //             for(let d=0; d<9; d++) {
+    //                 for(let e=0; e<9; e++) {
+    //                     for(let f=0; f<9; f++){
+    //                         for(let g=0; g<9; g++){
+    //                             for(let h=0; h<9; h++) {
+    //                                 if((a*10**7+b*10**6+c*10**5+d*10**4+e*10**3+f*10**2+g*10 +h)==(fact(a)+fact(b)+fact(c)+fact(d)+fact(e)+fact(f)+fact(g)+fact(h))) {
+    //                                     // console.log(a*10**5+b*10**4+c*10**3+d*10**2+e*10+f);
+    //                                     // console.log(fact(a)+fact(b)+fact(c)+fact(d)+fact(e)+fact(f));
+    //                                     arr.push([a,b,c,d,e,f,g,h]);
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     } 
+    // }
+    console.log(arr);
+}
+
+findsumfactorial();
+
+// console.log(fact(8));
+// console.log(fact(9));
+
+// console.log(finddigit(1554n));
+
