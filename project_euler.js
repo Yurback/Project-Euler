@@ -2086,80 +2086,123 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 // Find the sum of all numbers which are equal to the sum of the factorial of their digits.
 // Note: As 1!=1 and 2!=2 are not sums they are not included.
 
-function fact(number) {
-    let result = 1;
-    for(let i=2; i<=number; i++) {
-        result = result * i;
-    }
-    if(number == 0)return 0;
-    return result;
-}
+// function fact(number) {
+//     let result = 1;
+//     for(let i=2; i<=number; i++) {
+//         result = result * i;
+//     }
+//     return result;
+// }
 
-function finddigit(num){
-    let strnum = num.toString()
-    let length = strnum.length;
-    let arrnum = [];
-    for(let i=0; i<length; i++){
-        arrnum.push(BigInt(parseInt(strnum.slice(i,i+1))));
-    }
-    return arrnum;
-}
+// function finddigit(num){
+//     let strnum = num.toString()
+//     let length = strnum.length;
+//     let arrnum = [];
+//     for(let i=0; i<length; i++){
+//         arrnum.push(BigInt(parseInt(strnum.slice(i,i+1))));
+//     }
+//     return arrnum;
+// }
 
-function findsumfactorial() {
-    const arr = [];
-    let memo = {
-        0:0n,
-        1:1n,
-        2:2n,
-        3:6n,
-        4:24n,
-        5:120n,
-        6:720n,
-        7:5040n,
-        8:40320n,
-        9:362880n
-    };
+// function findsumfactorial() {
+//     const arr = [];
+//     let memo = {
+//         0:1n,
+//         1:1n,
+//         2:2n,
+//         3:6n,
+//         4:24n,
+//         5:120n,
+//         6:720n,
+//         7:5040n,
+//         8:40320n,
+//         9:362880n
+//     };
 
-    for(let i= 3n; i<100000000n; i=i+1n ){
-        let checkarr = finddigit(i);
-        let sumfact = 0n;
-        for(let i =0; i<checkarr.length; i++) {
-            sumfact+= memo[checkarr[i]];
-        }
+//     for(let i= 3n; i<100000000n; i=i+1n ){
+//         let checkarr = finddigit(i);
+//         let sumfact = 0n;
+//         for(let i =0; i<checkarr.length; i++) {
+//             sumfact+= memo[checkarr[i]];
+//         }
 
-        if(sumfact==i) arr.push(i);
-    }
+//         if(sumfact==i) arr.push(i);
+//     }
 
+//     console.log(arr);
+// }
 
-    // // a, b, c, d, e, f, g, h
-    // for(let a=0; a<9; a++) {
-    //     for(let b=0; b<9; b++){
-    //         for(let c=0; c<9; c++){
-    //             for(let d=0; d<9; d++) {
-    //                 for(let e=0; e<9; e++) {
-    //                     for(let f=0; f<9; f++){
-    //                         for(let g=0; g<9; g++){
-    //                             for(let h=0; h<9; h++) {
-    //                                 if((a*10**7+b*10**6+c*10**5+d*10**4+e*10**3+f*10**2+g*10 +h)==(fact(a)+fact(b)+fact(c)+fact(d)+fact(e)+fact(f)+fact(g)+fact(h))) {
-    //                                     // console.log(a*10**5+b*10**4+c*10**3+d*10**2+e*10+f);
-    //                                     // console.log(fact(a)+fact(b)+fact(c)+fact(d)+fact(e)+fact(f));
-    //                                     arr.push([a,b,c,d,e,f,g,h]);
-    //                                 }
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     } 
-    // }
-    console.log(arr);
-}
-
-findsumfactorial();
+// findsumfactorial();
 
 // console.log(fact(8));
 // console.log(fact(9));
 
 // console.log(finddigit(1554n));
 
+// 35 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Circular Primes
+/* <p>The number, $197$, is called a circular prime because all rotations of the digits: $197$, $971$, and $719$, are themselves prime.</p>
+<p>There are thirteen such primes below $100$: $2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79$, and $97$.</p>
+<p>How many circular primes are there below one million?</p> */
+
+
+// function finddigit(num) {
+//     let strnum = num.toString()
+//     let length = strnum.length;
+//     let arrnum = [];
+//     for (let i = 0; i < length; i++) {
+//         arrnum.push(BigInt(parseInt(strnum.slice(i, i + 1))));
+//     }
+//     return arrnum;
+// }
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     return true;
+// }
+
+// function rotatenumber(num) {
+//     const arr = [];
+
+//     let chunks = finddigit(num);
+//     arr.push([...chunks]);
+//     let times = chunks.length;
+//     let memory = 0;
+//     for (let j = 0; j < times-1; j++) {
+        
+//         for (let i = 0; i < times; i++) {
+//             if (i == 0) {
+//                 memory = chunks[times - 1];
+//                 chunks[times - 1] = chunks[0];
+//             }
+//             else if (i == times - 1) {
+//                 chunks[i - 1] = memory;
+//                 arr.push([...chunks]);
+//             } else {
+//                 chunks[i - 1] = chunks[i];
+//             }
+//         }
+
+//     }
+
+//     return arr;
+// }
+
+// function cntcircularprimes() {
+//     const knapsack = [];
+//     cycle:
+//     for (let i = 1; i < 100; i++) {
+//         if (!isPrime(i)) continue;
+//         const combo = rotatenumber(i);
+//         for (let j = 0; j < combo.length; j++) {
+//             if (!isPrime(parseInt(combo[j].join('')))) continue cycle;
+//         }
+//         knapsack.push(i);
+//     }
+//     return knapsack;
+// }
+
+// console.log(cntcircularprimes()); 55 V
