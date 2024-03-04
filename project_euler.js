@@ -2287,3 +2287,54 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 
 // console.log(findelevenPrime());
 // console.log(findelevenPrime().reduce((acc,elem)=>acc+elem)); // 748317 V
+
+//38 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Pandigital Multiples
+/* <p>Take the number $192$ and multiply it by each of $1$, $2$, and $3$:</p>
+\begin{align}
+192 \times 1 &amp;= 192\\
+192 \times 2 &amp;= 384\\
+192 \times 3 &amp;= 576
+\end{align}
+<p>By concatenating each product we get the $1$ to $9$ pandigital, $192384576$. We will call $192384576$ the concatenated product of $192$ and $(1,2,3)$.</p>
+<p>The same can be achieved by starting with $9$ and multiplying by $1$, $2$, $3$, $4$, and $5$, giving the pandigital, $918273645$, which is the concatenated product of $9$ and $(1,2,3,4,5)$.</p>
+<p>What is the largest $1$ to $9$ pandigital $9$-digit number that can be formed as the concatenated product of an integer with $(1,2, \dots, n)$ where $n \gt 1$?</p> */
+
+// a b c d e f g h k
+// 1 2 3 4 5 6 7 8 9 
+
+
+// function isPandigit(num) {
+//     let strnum = Number(num).toString(10);
+//     if (strnum.length != 9) return false;
+//     let set = new Set(strnum);
+//     if (set.size != 9) return false;
+//     if (set.has('0')) return false;
+//     return true;
+// }
+
+// function concutnumbers(num1, num2) {
+//     return Number(num1).toString() + Number(num2).toString();
+// }
+
+// function findMaxPandigit() {
+//     let maxpandigit = 0;
+//     for (let i = 1; i < 10000000; i++) {
+//         let arrN = [];
+//         multiplier = 2;
+//         let sum = Number(i).toString();
+//         do {
+//             sum = sum + Number(i * multiplier).toString();
+//             multiplier++
+//         } while (sum.length < 9);
+//         if(isPandigit(sum)) {
+//             if(maxpandigit<parseInt(sum)) maxpandigit=parseInt(sum);
+//         }
+//     }
+//     return maxpandigit;
+// }
+
+// console.log(findMaxPandigit()); // 932718654 V
+
+
+
