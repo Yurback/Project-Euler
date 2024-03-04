@@ -2325,6 +2325,9 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 //         let sum = Number(i).toString();
 //         do {
 //             sum = sum + Number(i * multiplier).toString();
+
+
+
 //             multiplier++
 //         } while (sum.length < 9);
 //         if(isPandigit(sum)) {
@@ -2365,3 +2368,23 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 // }
 
 // maxcnttriangle(); // 840 V
+
+// 40 Problem 
+// Champernowne's Constant
+/*<p>An irrational decimal fraction is created by concatenating the positive integers:
+$$0.12345678910{\color{red}\mathbf 1}112131415161718192021\cdots$$</p>
+<p>It can be seen that the $12$<sup>th</sup> digit of the fractional part is $1$.</p>
+<p>If $d_n$ represents the $n$<sup>th</sup> digit of the fractional part, find the value of the following expression.
+$$d_1 \times d_{10} \times d_{100} \times d_{1000} \times d_{10000} \times d_{100000} \times d_{1000000}$$</p> */
+
+// function findfractionalpart() {
+//     let strnum = '.';
+//     for( let i = 1; i<1000000; i++) {
+//         strnum += i;
+//     }
+//     return strnum[1]*strnum[10]*strnum[100]*strnum[1000]*strnum[10000]*strnum[100000]*strnum[1000000];
+
+// }
+
+// console.log(findfractionalpart()); // 210 V
+
