@@ -2172,7 +2172,7 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 //     let times = chunks.length;
 //     let memory = 0;
 //     for (let j = 0; j < times-1; j++) {
-        
+
 //         for (let i = 0; i < times; i++) {
 //             if (i == 0) {
 //                 memory = chunks[times - 1];
@@ -2251,4 +2251,39 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 // sumPalindromic();
 
 // 37 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Truncatable Primes
+// // Truncatable Primes
+// <p>The number $3797$ has an interesting property. Being prime itself, it is possible to continuously remove digits from left to right, and remain prime at each stage: $3797$, $797$, $97$, and $7$. Similarly we can work from right to left: $3797$, $379$, $37$, and $3$.</p>
+// <p>Find the sum of the only eleven primes that are both truncatable from left to right and right to left.</p>
+// <p class="smaller">NOTE: $2$, $3$, $5$, and $7$ are not considered to be truncatable primes.</p>
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     if(num==1) return false;
+//     return true;
+// }
+
+// function findelevenPrime() {
+//     let arrprimes = [];
+//     // let number = 3797;
+//     cycle:
+//    for(let number = 11; arrprimes.length<11; number++) {
+//         let stringnumber = Number(number).toString(10);
+//         let copystring = stringnumber;
+//         for(let i=0; i<stringnumber.length; i++){
+//             if(!isPrime(parseInt(stringnumber.slice(i))) || !isPrime(parseInt(stringnumber.slice(0,stringnumber.length-1-i)))) {
+//                 number ++;
+//                 continue cycle;
+//             }
+//         }
+//         arrprimes.push(number);
+//         number++;
+//     }
+//     return arrprimes;
+// }
+
+
+// console.log(findelevenPrime());
+// console.log(findelevenPrime().reduce((acc,elem)=>acc+elem)); // 748317 V
