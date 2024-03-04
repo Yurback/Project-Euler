@@ -2388,3 +2388,90 @@ $$d_1 \times d_{10} \times d_{100} \times d_{1000} \times d_{10000} \times d_{10
 
 // console.log(findfractionalpart()); // 210 V
 
+// 41 Problem
+// Pandigital Prime
+
+// We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
+// What is the largest n-digit pandigital prime that exists?
+
+// function isPandigit(num) {
+//     let strnum = Number(num).toString(10);
+//     const comondigits = strnum.length;
+//     if (comondigits == 9) {
+//         if (strnum.length != 9) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 9) return false;
+//         if (set.has('0')) return false;
+//         return true;
+//     } else if (comondigits == 8){
+//         if (strnum.length != 8) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 8) return false;
+//         if (set.has('0') || set.has('9')) return false;
+//         return true;
+//     } else if (comondigits == 7){
+//         if (strnum.length != 7) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 7) return false;
+//         if (set.has('0') || set.has('9') || set.has('8')) return false;
+//         return true;
+//     } else if (comondigits == 6){
+//         if (strnum.length != 6) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 6) return false;
+//         if (set.has('0') || set.has('9') || set.has('8') || set.has('7')) return false;
+//         return true;
+//     } else if (comondigits == 5){
+//         if (strnum.length != 5) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 5) return false;
+//         if (set.has('0') || set.has('9') || set.has('8') || set.has('7') || set.has('6')) return false;
+//         return true;
+//     } else if (comondigits == 4){
+//         if (strnum.length != 4) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 4) return false;
+//         if (set.has('0') || set.has('9') || set.has('8') || set.has('7') || set.has('6') || set.has('5')) return false;
+//         return true;
+//     } else if (comondigits == 3){
+//         if (strnum.length != 3) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 3) return false;
+//         if (set.has('0') || set.has('9') || set.has('8') || set.has('7') || set.has('6') || set.has('5') || set.has('4')) return false;
+//         return true;
+//     } else if (comondigits == 2){
+//         if (strnum.length != 2) return false;
+//         let set = new Set(strnum);
+//         if (set.size != 2) return false;
+//         if (set.has('0') || set.has('9') || set.has('8') || set.has('7') || set.has('6') || set.has('5') || set.has('4') || set.has('3')) return false;
+//         return true;
+//     }
+// }
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     if(num==1) return false;
+//     return true;
+// }
+
+// function findbigestPrime() {
+//     let num = 0;
+//     for (let i = 0; i<999999999; i++) {
+//         if(isPandigit(i) && isPrime(i)) {
+//             if (i>num) num = i;
+//         }
+//     }
+//     console.log(num);
+// }
+
+// findbigestPrime() // 7652413 V
+
+// 42 
+
+/* <p>The $n$<sup>th</sup> term of the sequence of triangle numbers is given by, $t_n = \frac12n(n+1)$; so the first ten triangle numbers are:
+$$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
+<p>By converting each letter in a word to a number corresponding to its alphabetical position and adding these values we form a word value. For example, the word value for SKY is $19 + 11 + 25 = 55 = t_{10}$. If the word value is a triangle number then we shall call the word a triangle word.</p>
+<p>Using <a href="resources/documents/0042_words.txt">words.txt</a> (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?</p> */
