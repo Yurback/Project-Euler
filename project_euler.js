@@ -2202,7 +2202,53 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 //         }
 //         knapsack.push(i);
 //     }
-//     return knapsack;
+//     return knapsack;Number(decimal).toString(2)
 // }
 
 // console.log(cntcircularprimes()); 55 V
+
+// 36 Problem
+// Double-base Palindromes
+/* <p>The decimal number, $585 = 1001001001_2$ (binary), is palindromic in both bases.</p>
+<p>Find the sum of all numbers, less than one million, which are palindromic in base $10$ and base $2$.</p>
+<p class="smaller">(Please note that the palindromic number, in either base, may not include leading zeros.)</p> */
+
+// function finddigit(num) {
+//     let strnum = num.toString()
+//     let length = strnum.length;
+//     let arrnum = [];
+//     for (let i = 0; i < length; i++) {
+//         arrnum.push(parseInt(strnum.slice(i, i + 1)));
+//     }
+//     return arrnum;
+// }
+
+// function isPalindrombase10(num){
+//     let chunks = finddigit(num);
+//     for (let i = 0; i<(chunks.length-1)/2; i++) {
+//         if(chunks[i]!=chunks[chunks.length-1-i]) return false;
+//     }
+//     return true;
+// }
+
+// function isPalindrombase2(num){
+//     let chunks = Number(num).toString(2)
+//     for (let i = 0; i<(chunks.length-1)/2; i++) {
+//         console.log(chunks[i],chunks[chunks.length-1-i]);
+//         if(chunks[i]!=chunks[chunks.length-1-i]) return false;
+//     }
+//     return true;
+// }
+
+// function sumPalindromic() {
+//     let arr = [];
+//     for (let i=0; i<1000000; i++) {
+//         if(isPalindrombase10(i) && isPalindrombase2(i)) arr.push(i);
+//     }
+//     console.log(arr.reduce((acc,elem)=>acc+elem));
+// }
+
+// sumPalindromic();
+
+// 37 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Truncatable Primes
