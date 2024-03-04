@@ -2336,5 +2336,32 @@ $$4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125.$$</p>
 
 // console.log(findMaxPandigit()); // 932718654 V
 
+// 39 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Integer Right Triangles
 
+/* <p>If $p$ is the perimeter of a right angle triangle with integral length sides, $\{a, b, c\}$, there are exactly three solutions for $p = 120$.</p>
+<p>$\{20,48,52\}$, $\{24,45,51\}$, $\{30,40,50\}$</p>
+<p>For which value of $p \le 1000$, is the number of solutions maximised?</p> */
 
+// function maxcnttriangle() {
+//     arrtriangle = [];
+//     for (let i = 1; i < 999; i++) {
+//         for (let j = 1; j < 999; j++) {
+//             for (let n = j + 1; n < 1000; n++) {
+//                 if (i ** 2 + j ** 2 == n ** 2) arrtriangle.push([i, j, n]);
+//             }
+//         }
+//     }
+//     // console.log(arrtriangle);
+//     let newarr = arrtriangle.map(el => el.reduce((acc, elem) => acc + elem));
+//     const count = {};
+//     newarr.forEach(i => count[i] = (count[i] || 0) + 1);
+//     console.log(count);
+//     console.log(newarr);
+
+//     const getMaxKey = o => Object.entries(o).reduce((r, e) =>(e[0]<=1000 && e[1] > r[1]) ? e : r)[0]
+//     const result = getMaxKey(count);
+//     console.log(result);
+// }
+
+// maxcnttriangle(); // 840 V
