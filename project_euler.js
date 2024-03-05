@@ -2469,9 +2469,46 @@ $$d_1 \times d_{10} \times d_{100} \times d_{1000} \times d_{10000} \times d_{10
 
 // findbigestPrime() // 7652413 V
 
-// 42 
+// 42 Problem+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Coded Triangle Numbers
 
 /* <p>The $n$<sup>th</sup> term of the sequence of triangle numbers is given by, $t_n = \frac12n(n+1)$; so the first ten triangle numbers are:
 $$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
 <p>By converting each letter in a word to a number corresponding to its alphabetical position and adding these values we form a word value. For example, the word value for SKY is $19 + 11 + 25 = 55 = t_{10}$. If the word value is a triangle number then we shall call the word a triangle word.</p>
 <p>Using <a href="resources/documents/0042_words.txt">words.txt</a> (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?</p> */
+
+const sequence = [3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136, 153, 171, 190, 210, 231, 253, 276,
+    300, 325, 351, 378, 406, 435, 465, 496, 528, 561, 595, 630, 666, 703, 741, 780, 820, 861, 903, 946, 990,
+    1035, 1081, 1128, 1176, 1225, 1275, 1326, 1378, 1431, 1485, 1540, 1596, 1653, 1711, 1770, 1830, 1891,
+    1953, 2016, 2080, 2145, 2211, 2278, 2346, 2415, 2485, 2556, 2628, 2701, 2775, 2850, 2926, 3003, 3081,
+    3160, 3240, 3321, 3403, 3486, 3570, 3655, 3741, 3828, 3916, 4005, 4095, 4186, 4278, 4371, 4465, 4560,
+    4656, 4753, 4851, 4950];
+
+const arrresult = [1];
+
+document.querySelector('[type="file"]').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.addEventListener('load', (e) => {
+        let src = e.target.result;
+        src ='[' + src + ']';
+        console.log(src);
+        const words = JSON.parse(src);
+        console.log(words[0]);
+        words.forEach(element => {
+            const sum = element.split('').reduce((acc, elem) => acc + elem.charCodeAt() - 64, 0);
+           if (sequence.indexOf(sum) !=-1) arrresult.push(element);
+        });
+        console.log(arrresult.length);
+    });
+
+})
+
+function fillseq(seq) {
+    for (let i = 1; i < 100; i++) {
+        seq[i] = 1 / 2 * i * (i + 1);
+    }
+}
+
+ // Answer: 162 V
