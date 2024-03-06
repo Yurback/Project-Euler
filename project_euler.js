@@ -2477,38 +2477,114 @@ $$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
 <p>By converting each letter in a word to a number corresponding to its alphabetical position and adding these values we form a word value. For example, the word value for SKY is $19 + 11 + 25 = 55 = t_{10}$. If the word value is a triangle number then we shall call the word a triangle word.</p>
 <p>Using <a href="resources/documents/0042_words.txt">words.txt</a> (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?</p> */
 
-const sequence = [3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136, 153, 171, 190, 210, 231, 253, 276,
-    300, 325, 351, 378, 406, 435, 465, 496, 528, 561, 595, 630, 666, 703, 741, 780, 820, 861, 903, 946, 990,
-    1035, 1081, 1128, 1176, 1225, 1275, 1326, 1378, 1431, 1485, 1540, 1596, 1653, 1711, 1770, 1830, 1891,
-    1953, 2016, 2080, 2145, 2211, 2278, 2346, 2415, 2485, 2556, 2628, 2701, 2775, 2850, 2926, 3003, 3081,
-    3160, 3240, 3321, 3403, 3486, 3570, 3655, 3741, 3828, 3916, 4005, 4095, 4186, 4278, 4371, 4465, 4560,
-    4656, 4753, 4851, 4950];
+// const sequence = [3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136, 153, 171, 190, 210, 231, 253, 276,
+//     300, 325, 351, 378, 406, 435, 465, 496, 528, 561, 595, 630, 666, 703, 741, 780, 820, 861, 903, 946, 990,
+//     1035, 1081, 1128, 1176, 1225, 1275, 1326, 1378, 1431, 1485, 1540, 1596, 1653, 1711, 1770, 1830, 1891,
+//     1953, 2016, 2080, 2145, 2211, 2278, 2346, 2415, 2485, 2556, 2628, 2701, 2775, 2850, 2926, 3003, 3081,
+//     3160, 3240, 3321, 3403, 3486, 3570, 3655, 3741, 3828, 3916, 4005, 4095, 4186, 4278, 4371, 4465, 4560,
+//     4656, 4753, 4851, 4950];
 
-const arrresult = [1];
+// const arrresult = [1];
 
-document.querySelector('[type="file"]').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsText(file);
-    reader.addEventListener('load', (e) => {
-        let src = e.target.result;
-        src ='[' + src + ']';
-        console.log(src);
-        const words = JSON.parse(src);
-        console.log(words[0]);
-        words.forEach(element => {
-            const sum = element.split('').reduce((acc, elem) => acc + elem.charCodeAt() - 64, 0);
-           if (sequence.indexOf(sum) !=-1) arrresult.push(element);
-        });
-        console.log(arrresult.length);
-    });
+// document.querySelector('[type="file"]').addEventListener('change', (e) => {
+//     const file = e.target.files[0];
+//     const reader = new FileReader();
+//     reader.readAsText(file);
+//     reader.addEventListener('load', (e) => {
+//         let src = e.target.result;
+//         src ='[' + src + ']';
+//         console.log(src);
+//         const words = JSON.parse(src);
+//         console.log(words[0]);
+//         words.forEach(element => {
+//             const sum = element.split('').reduce((acc, elem) => acc + elem.charCodeAt() - 64, 0);
+//            if (sequence.indexOf(sum) !=-1) arrresult.push(element);
+//         });
+//         console.log(arrresult.length);
+//     });
 
-})
+// })
 
-function fillseq(seq) {
-    for (let i = 1; i < 100; i++) {
-        seq[i] = 1 / 2 * i * (i + 1);
-    }
-}
+// function fillseq(seq) {
+//     for (let i = 1; i < 100; i++) {
+//         seq[i] = 1 / 2 * i * (i + 1);
+//     }
+// }
 
- // Answer: 162 V
+// Answer: 162 V
+
+// 43 Problem++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//  Sub-srting Divisibility
+/* <p>The number, $1406357289$, is a $0$ to $9$ pandigital number because it is made up of each of the digits $0$ to $9$ in some order, but it also has a rather interesting sub-string divisibility property.</p>
+<p>Let $d_1$ be the $1$<sup>st</sup> digit, $d_2$ be the $2$<sup>nd</sup> digit, and so on. In this way, we note the following:</p>
+<ul><li>$d_2d_3d_4=406$ is divisible by $2$</li>
+<li>$d_3d_4d_5=063$ is divisible by $3$</li>
+<li>$d_4d_5d_6=635$ is divisible by $5$</li>
+<li>$d_5d_6d_7=357$ is divisible by $7$</li>
+<li>$d_6d_7d_8=572$ is divisible by $11$</li>
+<li>$d_7d_8d_9=728$ is divisible by $13$</li>
+<li>$d_8d_9d_{10}=289$ is divisible by $17$</li>
+</ul><p>Find the sum of all $0$ to $9$ pandigital numbers with this property.</p> */
+
+// let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+
+// function permuntation_WO(inputarray) {
+//     const outputArray = [];
+
+//     if (inputarray.length === 1) {
+//         return [[inputarray[0]]];
+//     }
+
+//     const newArray = permuntation_WO(inputarray.slice(1));
+//     // most nested call return [['d']]
+//     // console.log(newArray);
+
+//     const option = inputarray[0];
+
+
+//     for (const permontation of newArray) {
+//         for (let i = 0; i <= permontation.length; i++) {
+//             const firstelement = permontation.slice(0, i);
+//             const lastelement = permontation.slice(i);
+//             outputArray.push(firstelement.concat(option).concat(lastelement));
+//         }
+
+//     }
+//     return outputArray;
+// }
+
+// function solve42problem(numbers) {
+//     let pandigitals = permuntation_WO(numbers);
+//     // for(let i=0; i<pandigitals.length;)
+//     let searchnum = []
+//     pandigitals.forEach(element => {
+//         for (let i = 1; i < element.length - 2; i++) {
+//             let num = element[i] + element[i + 1] + element[i + 2];
+//             if (i == 1 && parseInt(num) % 2 != 0) break;
+//             if (i == 2 && parseInt(num) % 3 != 0) break;
+//             if (i == 3 && parseInt(num) % 5 != 0) break;
+//             if (i == 4 && parseInt(num) % 7 != 0) break;
+//             if (i == 5 && parseInt(num) % 11 != 0) break;
+//             if (i == 6 && parseInt(num) % 13 != 0) break;
+//             if (i == 7 && parseInt(num) % 17 != 0) break; 
+//             if (i == 7 && parseInt(num) % 17 == 0) searchnum.push(element);
+          
+//         }
+//     });
+//     let sum = 0
+//     searchnum.forEach(elem=>sum+=+parseInt(elem.join('')));
+//     console.log(sum);
+
+
+// }
+
+// solve42problem(numbers); // 16695334890  V
+
+
+
+
+
+
+
+
