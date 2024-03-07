@@ -44,6 +44,7 @@
 //     for (let i=2; i<=pivot; i++) {
 //         if (num%i ===0) return false;
 //     }
+//     if (num==1) return false;
 //     return true;
 // }
 // function largPrimFactor(num) {
@@ -2649,3 +2650,63 @@ $$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
 
 // findnumber();  // 1533776805
 
+// 46 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Goldbach's Other Conjecture
+
+/* <p>It was proposed by Christian Goldbach that every odd composite number can be written as the sum of a prime and twice a square.</p>
+\begin{align}
+9 = 7 + 2 \times 1^2\\
+15 = 7 + 2 \times 2^2\\
+21 = 3 + 2 \times 3^2\\
+25 = 7 + 2 \times 3^2\\
+27 = 19 + 2 \times 2^2\\
+33 = 31 + 2 \times 1^2
+\end{align}
+<p>It turns out that the conjecture was false.</p>
+<p>What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?</p> */
+
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     if (num == 1) return false;
+//     return true;
+// }
+
+
+
+// function findsmallest() {
+//     number = 0;
+//     let chain = [];
+//     for (let i = 1; i < 999999; i++) {
+//         if (isPrime(i)) chain.push(i);
+//     }
+//     console.log(chain);
+//     let twiceTwo = [];
+//     for (let i = 1; i < 1000; i++) {
+//         let x = 2 * i ** 2;
+//         twiceTwo.push(x);
+//     }
+//     console.log(twiceTwo);
+//     cycle:
+//     for (let i = 1; i < 10000; i++) {
+//         if (i % 2 != 0 && !isPrime(i)) {
+//             for (let j = 0; j < chain.length; j++) {
+//                 if (i - chain[j] > 0) {
+//                     for (let n = 0; n < twiceTwo.length; n++) {
+//                         if ((i - chain[j] - twiceTwo[n]) == 0) continue cycle;
+//                         if ((i - chain[j] - twiceTwo[n]) < 0) break;
+//                     }
+//                 }
+//                 if (i - chain[j] < 0 && i!= 1) {
+//                     number = i; break cycle;
+//                 }
+//             }
+//         }
+//     }
+//     console.log(number); // 5777 V
+// }
+
+findsmallest();
