@@ -2709,4 +2709,62 @@ $$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
 //     console.log(number); // 5777 V
 // }
 
-findsmallest();
+// findsmallest();
+
+// 47 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Distinct Primes Factors
+
+// <p>The first two consecutive numbers to have two distinct prime factors are:</p>
+// \begin{align}
+// 14 &amp;= 2 \times 7\\
+// 15 &amp;= 3 \times 5.
+// \end{align}
+// <p>The first three consecutive numbers to have three distinct prime factors are:</p>
+// \begin{align}
+// 644 &amp;= 2^2 \times 7 \times 23\\
+// 645 &amp;= 3 \times 5 \times 43\\
+// 646 &amp;= 2 \times 17 \times 19.
+// \end{align}
+// <p>Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?</p>
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     if (num == 1) return false;
+//     return true;
+// }
+
+// function factortoPrimeCount(n,count) {
+//     let arr = [];
+//     let countPrime=0;
+//     for (let i = 2; i < Math.sqrt(n) && countPrime<count; i++) {
+//         if (n % i === 0)  {
+//             if(isPrime(i)) countPrime++;
+//             if(isPrime(n/i)) countPrime++;
+//             arr.push(i);
+//             arr.push(n / i);
+//         }
+//     }
+//     // arr.push(n);
+//     return countPrime==count;
+}
+
+// console.log(factortoPrimeCount(16,3));
+
+
+// function findFourConj() {
+//     let sequence = [];
+//     for(let i = 647; i<1000000; i++) {
+//         if(factortoPrimeCount(i,4) && factortoPrimeCount(i+1,4) && factortoPrimeCount(i+2,4)&&factortoPrimeCount(i+3,4)) {
+//             sequence.push(i,i+1,i+2,i+3);
+//             break;
+//         }
+//     }
+//     return sequence;
+// }
+
+// console.log(findFourConj()); // [134043, 134044, 134045, 134046] V
+
+// 48 Problem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
