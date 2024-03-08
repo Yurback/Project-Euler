@@ -2872,42 +2872,105 @@ $$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
 <p>There are no arithmetic sequences made up of three $1$-, $2$-, or $3$-digit primes, exhibiting this property, but there is one other $4$-digit increasing sequence.</p>
 <p>What $12$-digit number do you form by concatenating the three terms in this sequence?</p> */
 
-function isPrime(num) {
-    const pivot = Math.sqrt(num);
-    for (let i = 2; i <= pivot; i++) {
-        if (num % i === 0) return false;
-    }
-    if (num == 1) return false;
-    return true;
-}
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     if (num == 1) return false;
+//     return true;
+// }
 
-function find3numbers() {
-    let arr = [];
-    let search = [];
-    for (let i = 1000; i < 10000; i++) {
-        if (isPrime(i)) arr.push(i);
-    }
-    console.log(arr);
-    for (let i = 0; i < arr.length - 2; i++) {
-        for (let j = i + 1; j < arr.length; j++) {
-            let x = new Set(Number(arr[i]).toString(10));
-            let y = new Set(Number(arr[j]).toString(10));
-            let z = new Set([...x, ...y]);
-            if (x.size == z.size) {
-                let dif = arr[j] - arr[i];
-                let third = arr[j] + dif;
-                if (arr.indexOf(third) != -1) {
-                    let a = new Set(Number(third).toString(10));
-                    let b = new Set([...x, ...a])
-                    if (y.size == b.size) {
-                        search.push([arr[i], arr[j], third]);
-                    }
-                }
+// function find3numbers() {
+//     let arr = [];
+//     let search = [];
+//     for (let i = 1000; i < 10000; i++) {
+//         if (isPrime(i)) arr.push(i);
+//     }
+//     console.log(arr);
+//     for (let i = 0; i < arr.length - 2; i++) {
+//         for (let j = i + 1; j < arr.length; j++) {
+//             let x = new Set(Number(arr[i]).toString(10));
+//             let y = new Set(Number(arr[j]).toString(10));
+//             let z = new Set([...x, ...y]);
+//             if (x.size == z.size) {
+//                 let dif = arr[j] - arr[i];
+//                 let third = arr[j] + dif;
+//                 if (arr.indexOf(third) != -1) {
+//                     let a = new Set(Number(third).toString(10));
+//                     let b = new Set([...x, ...a])
+//                     if (y.size == b.size) {
+//                         search.push([arr[i], arr[j], third]);
+//                     }
+//                 }
 
-            }
-        }
-    }
-    console.log(search);
-}
+//             }
+//         }
+//     }
+//     console.log(search);
+// }
 
-find3numbers(); // [296962999629]
+// find3numbers(); // [2969 6299 9629] V
+
+//50 Problem+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* <p>The prime $41$, can be written as the sum of six consecutive primes:</p>
+$$41 = 2 + 3 + 5 + 7 + 11 + 13.$$
+<p>This is the longest sum of consecutive primes that adds to a prime below one-hundred.</p>
+<p>The longest sum of consecutive primes below one-thousand that adds to a prime, contains $21$ terms, and is equal to $953$.</p>
+<p>Which prime, below one-million, can be written as the sum of the most consecutive primes?</p> */
+
+// function isPrime(num) {
+//     const pivot = Math.sqrt(num);
+//     for (let i = 2; i <= pivot; i++) {
+//         if (num % i === 0) return false;
+//     }
+//     if (num == 1) return false;
+//     return true;
+// }
+
+// let arr = function(){
+//       let arr = [];
+//     for (let i = 1; i < 1000000; i++) {
+//         if (isPrime(i)) arr.push(i);
+//     }
+//     return arr;
+// } ()
+
+// function findsequencesum(arr, start, Summa) {
+  
+//     let sum = 0;
+//     let num = 0;
+//     for (let i=start; i<arr.length; i++) {
+//         sum+=arr[i];
+//         if(sum>=Summa) {
+//             num = i;   
+//             break;
+//         }
+//     }
+//     for( let i=num; i>0; i--) {
+//         sum-=arr[i];
+//         if(sum<Summa && isPrime(sum)) {
+//             num = i-start;   
+//             break;
+//         }
+//     }
+//     return [sum,num];
+// }
+
+// function longestSum(arr, Summa) {
+//     let maxSum = 0;
+//     let maxchain = 0
+//     for (let i=0; i<=arr.length; i++) {
+//         let result = findsequencesum(arr,i,Summa);
+//             // console.log(result,i);
+//             if (result[1]>=maxchain) {
+//             maxchain = result[1];
+//             maxSum = result[0];
+//         }
+//     }
+//     console.log(maxSum,maxchain);
+// }
+// console.log(arr);
+
+// longestSum(arr,1000000);
+
