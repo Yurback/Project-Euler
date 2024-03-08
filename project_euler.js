@@ -2863,5 +2863,51 @@ $$1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \dots$$</p>
 //     return res;
 // }
 
-// console.log(sumdigits(1000)); //9110846700 V
+// console.log(sumdigits(1000)); //9110846700 V Второе решение использовать вместо чисел bim num например 1n
 
+// 49 Problem +++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Prime Permutations
+
+/* <p>The arithmetic sequence, $1487, 4817, 8147$, in which each of the terms increases by $3330$, is unusual in two ways: (i) each of the three terms are prime, and, (ii) each of the $4$-digit numbers are permutations of one another.</p>
+<p>There are no arithmetic sequences made up of three $1$-, $2$-, or $3$-digit primes, exhibiting this property, but there is one other $4$-digit increasing sequence.</p>
+<p>What $12$-digit number do you form by concatenating the three terms in this sequence?</p> */
+
+function isPrime(num) {
+    const pivot = Math.sqrt(num);
+    for (let i = 2; i <= pivot; i++) {
+        if (num % i === 0) return false;
+    }
+    if (num == 1) return false;
+    return true;
+}
+
+function find3numbers() {
+    let arr = [];
+    let search = [];
+    for (let i = 1000; i < 10000; i++) {
+        if (isPrime(i)) arr.push(i);
+    }
+    console.log(arr);
+    for (let i = 0; i < arr.length - 2; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            let x = new Set(Number(arr[i]).toString(10));
+            let y = new Set(Number(arr[j]).toString(10));
+            let z = new Set([...x, ...y]);
+            if (x.size == z.size) {
+                let dif = arr[j] - arr[i];
+                let third = arr[j] + dif;
+                if (arr.indexOf(third) != -1) {
+                    let a = new Set(Number(third).toString(10));
+                    let b = new Set([...x, ...a])
+                    if (y.size == b.size) {
+                        search.push([arr[i], arr[j], third]);
+                    }
+                }
+
+            }
+        }
+    }
+    console.log(search);
+}
+
+find3numbers(); // [296962999629]
